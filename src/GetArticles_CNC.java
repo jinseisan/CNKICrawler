@@ -144,7 +144,7 @@ public class GetArticles_CNC {
         for (DomElement li : articlesNode.getChildElements()) {
             HtmlAnchor anchor = (HtmlAnchor) li.getFirstElementChild().getNextElementSibling();
             String articleUrl = "http://kns.cnki.net" + anchor.getHrefAttribute();//连接
-            String articleTitle = anchor.asText();//题名
+            String articleTitle = anchor.asText().replace(",","，");//题名
             String articleAuthors = anchor.getNextSibling().asText().split(" ")[1].replace(".","").trim().replaceAll("\\d+","").replace(",",", ");//作者
             String articleYear = articleUrl.substring(articleUrl.length()-7, articleUrl.length()-3);
             try{

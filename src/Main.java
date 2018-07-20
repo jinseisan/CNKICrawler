@@ -25,12 +25,13 @@ public class Main {
         */
         String authorsPath = "D:\\作业\\大三下\\数据仓库与数据挖掘\\大作业\\数据\\长江学者教授\\0-10.csv";
         List<String> authors = FileAccess.fileReader(authorsPath);
-        int i = 0;
+        int i = 6;
         for(String info : authors){
             String author = info.split(",")[0];
             String depart = info.split(",")[1];
 
             System.out.println("正在获取第"+(i+1)+"位作者——"+author+"的论文信息……");
+            System.out.print(i+": ");
             List<String> articles = GetArticles_CNC.getAllArticles(author, depart);
             System.out.print("论文详细信息获取完毕，开始写入文件……");
             String path = "D:\\作业\\大三下\\数据仓库与数据挖掘\\大作业\\数据\\处理数据\\0-10("+i +").csv";
