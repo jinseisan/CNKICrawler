@@ -12,6 +12,7 @@ public class Main {
         // 禁止日志的输出
         LogManager.getLogManager().reset();
         long time1 = System.currentTimeMillis();
+        /*
         System.out.println("开始获取作者论文基本信息……");
         List<String> articles = GetArticles_CNC.getAllArticles("张梅山", "哈尔滨工业大学");
         //List<String> articles = new LinkedList<>();
@@ -21,5 +22,25 @@ public class Main {
         String path = "D:\\作业\\大三下\\数据仓库与数据挖掘\\test.csv";
         FileAccess.fileWriter(path,articles);
         System.out.print("写入完毕！");
+        */
+        String authorsPath = "D:\\作业\\大三下\\数据仓库与数据挖掘\\大作业\\数据\\长江学者教授\\0-10.csv";
+        List<String> authors = FileAccess.fileReader(authorsPath);
+        int i = 0;
+        for(String info : authors){
+            String author = info.split(",")[0];
+            String depart = info.split(",")[1];
+
+            System.out.println("正在获取第"+(i+1)+"位作者——"+author+"的论文信息……");
+            List<String> articles = GetArticles_CNC.getAllArticles(author, depart);
+            System.out.print("论文详细信息获取完毕，开始写入文件……");
+            String path = "D:\\作业\\大三下\\数据仓库与数据挖掘\\大作业\\数据\\处理数据\\0-10("+i +").csv";
+            FileAccess.fileWriter(path,articles);
+            System.out.print("写入完毕！");
+
+            i++;
+        }
+
+
+
     }
 }

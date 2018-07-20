@@ -148,8 +148,9 @@ public class GetArticles_CNC {
             String articleAuthors = anchor.getNextSibling().asText().split(" ")[1].replace(".","").trim().replaceAll("\\d+","").replace(",",", ");//作者
             String articleYear = articleUrl.substring(articleUrl.length()-7, articleUrl.length()-3);
             try{
-                System.out.println(articleTitle + ";" + articleAuthors + ";" + articleUrl + ";" + articleYear);
+                //System.out.println(articleTitle + ";" + articleAuthors + ";" + articleUrl + ";" + articleYear);
                 articlesList.add(ArticleInfo.getArticleInfo(articleTitle + ";" + articleAuthors + ";" + articleUrl + ";" + articleYear));
+                System.out.println(articlesList.get(articlesList.size()-1));
             }catch (Exception e){
                 e.printStackTrace();
             }
