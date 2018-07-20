@@ -29,7 +29,12 @@ public class ArticleInfo {
         HtmlPage page = webClient.getPage(url);
         //获取文献的引证的节点
         DomNode citesDom = page.getElementById("MapArea").getFirstElementChild().getFirstElementChild().getLastChild().getPreviousSibling().getLastChild();
-        String cites = citesDom.asText().replace("(","").replace(")","");
+        String cites;
+        if(citesDom != null){
+            cites = citesDom.asText().replace("(","").replace(")","");
+        }else{
+            cites = "0";
+        }
         //System.out.println(cites);
         //获取文献发表年份节点
         //DomElement yearDom = page.getElementById("AxisFrameDivCurrent").getFirstElementChild().getFirstElementChild().getLastElementChild();
