@@ -23,18 +23,17 @@ public class Main {
         FileAccess.fileWriter(path,articles);
         System.out.print("写入完毕！");
         */
-        String authorsPath = "D:\\作业\\大三下\\数据仓库与数据挖掘\\大作业\\数据\\长江学者教授\\0-10.csv";
+        String authorsPath = "D:\\作业\\大三下\\数据仓库与数据挖掘\\大作业\\数据\\长江学者教授\\10-(1).csv";
         List<String> authors = FileAccess.fileReader(authorsPath);
-        int i = 6;
+        int i = 1;
         for(String info : authors){
             String author = info.split(",")[0];
             String depart = info.split(",")[1];
 
-            System.out.println("正在获取第"+(i+1)+"位作者——"+author+"的论文信息……");
-            System.out.print(i+": ");
+            System.out.println("正在获取第"+i+"位作者——"+author+"的论文信息……");
             List<String> articles = GetArticles_CNC.getAllArticles(author, depart);
             System.out.print("论文详细信息获取完毕，开始写入文件……");
-            String path = "D:\\作业\\大三下\\数据仓库与数据挖掘\\大作业\\数据\\处理数据\\0-10("+i +").csv";
+            String path = "D:\\作业\\大三下\\数据仓库与数据挖掘\\大作业\\数据\\处理数据\\10-("+i +").csv";
             FileAccess.fileWriter(path,articles);
             System.out.print("写入完毕！");
 

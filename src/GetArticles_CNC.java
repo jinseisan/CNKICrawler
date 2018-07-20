@@ -19,6 +19,7 @@ public class GetArticles_CNC {
         System.out.print(ArticleInfo.getArticleInfo("遵循国际出版规律 遵守国内出版规定——ISMTE第2届亚太会议综述(Ⅱ);付国乐, 张志强, 颜帅;http://kns.cnki.net/kcms/detail/detail.aspx?filename=BJXB201802037&dbcode=CJFQ&dbname=CJFD2018&v="));
     }
 
+    private static int count = 1;
     /**
      * 以专家的姓名为关键词使用知网的学者搜索获取专家的所有论文的链接
      *
@@ -144,13 +145,15 @@ public class GetArticles_CNC {
         for (DomElement li : articlesNode.getChildElements()) {
             HtmlAnchor anchor = (HtmlAnchor) li.getFirstElementChild().getNextElementSibling();
             String articleUrl = "http://kns.cnki.net" + anchor.getHrefAttribute();//连接
-            String articleTitle = anchor.asText().replace(",","，");//题名
-            String articleAuthors = anchor.getNextSibling().asText().split(" ")[1].replace(".","").trim().replaceAll("\\d+","").replace(",",", ");//作者
+            String articleTitle = anchor.asText().replace(",","，").replace("\"","'");//题名
+            String articleAuthors = anchor.getNextSibling().asText().split(" ")[1].replace(".","").trim().replaceAll("\\d+","").replace(",",", ").replace("\"","'");//作者
             String articleYear = articleUrl.substring(articleUrl.length()-7, articleUrl.length()-3);
             try{
                 //System.out.println(articleTitle + ";" + articleAuthors + ";" + articleUrl + ";" + articleYear);
                 articlesList.add(ArticleInfo.getArticleInfo(articleTitle + ";" + articleAuthors + ";" + articleUrl + ";" + articleYear));
+                System.out.print(count+":");
                 System.out.println(articlesList.get(articlesList.size()-1));
+                count++;
             }catch (Exception e){
                 e.printStackTrace();
             }
