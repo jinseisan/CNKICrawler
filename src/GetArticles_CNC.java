@@ -36,7 +36,8 @@ public class GetArticles_CNC {
         WebClient webClient = HtmlUtil.iniParam_Js();
         // 获取搜索页面
         @SuppressWarnings("deprecation")
-        String url = "http://kns.cnki.net/kcms/detail/knetsearch.aspx?sfield=au&skey=" + URLEncoder.encode(author);
+        //String url = "http://kns.cnki.net/kcms/detail/knetsearch.aspx?sfield=au&skey=" + URLEncoder.encode(author);
+        String url = "http://kns.cnki.net/kcms/detail/knetsearch.aspx?sfield=au&skey="+URLEncoder.encode(author)+"&code=08187501;08240298;08228288;";
         //获取搜索页面，搜索页面包含多个学者，机构通常是非完全匹配，姓名是完全匹配的，我们需要对所有的学者进行匹配操作
         HtmlPage page = webClient.getPage(url);
         //获取搜索页面的机构对应的节点
@@ -101,6 +102,7 @@ public class GetArticles_CNC {
      * @throws IOException
      */
     public static List<String> getPageArticles(HtmlPage page, int type) throws IOException {
+
         List<String> articlesList = new LinkedList<>();
         // 获取不同类型页面分页数目
         String id = "";// 页面中论文总数节点的id属性值

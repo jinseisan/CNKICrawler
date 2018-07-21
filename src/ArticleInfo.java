@@ -28,7 +28,7 @@ public class ArticleInfo {
         //获取文献信息页面
         HtmlPage page = webClient.getPage(url);
         //获取文献的引证的节点
-        DomNode citesDom = page.getElementById("MapArea").getFirstElementChild().getFirstElementChild().getLastChild().getPreviousSibling().getLastChild();
+        DomNode citesDom = page.getElementById("MapArea").getFirstElementChild().getFirstElementChild().getLastElementChild().getPreviousElementSibling().getLastElementChild();
         String cites;
         if(citesDom != null){
             cites = citesDom.asText().replace("(","").replace(")","");
