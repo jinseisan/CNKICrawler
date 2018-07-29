@@ -9,7 +9,7 @@ public class FileAccess {
     public static void fileWriter(String filePath, List<String> contents) {
         if (contents == null) return;
         try {
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filePath), "GBk"));
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filePath), "gbk"));
             writer.write(head);
             for (String i : contents) {
                 writer.append(i + "\n");
@@ -24,7 +24,7 @@ public class FileAccess {
     public static List<String> fileReader(String filePath) {
         List<String> authorsInfo = new LinkedList<>();
         try{
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "GBK"));
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "gbk"));
         String t;
         while ((t = br.readLine()) != null) {
             authorsInfo.add(t);

@@ -37,7 +37,7 @@ public class GetArticles_CNC {
         // 获取搜索页面
         @SuppressWarnings("deprecation")
         //String url = "http://kns.cnki.net/kcms/detail/knetsearch.aspx?sfield=au&skey=" + URLEncoder.encode(author);
-        String url = "http://kns.cnki.net/kcms/detail/knetsearch.aspx?sfield=au&skey="+URLEncoder.encode(author)+"&code=08187501;08240298;08228288;";
+        String url = "http://kns.cnki.net/kcms/detail/knetsearch.aspx?sfield=au&skey="+URLEncoder.encode(author)+"&code=25491959;32213905;32213906;";
         //获取搜索页面，搜索页面包含多个学者，机构通常是非完全匹配，姓名是完全匹配的，我们需要对所有的学者进行匹配操作
         HtmlPage page = webClient.getPage(url);
         //获取搜索页面的机构对应的节点
